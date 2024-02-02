@@ -1,0 +1,73 @@
+
+body {
+    background-color: #ffffff;
+}
+h1 {
+    color: #ec1a23;
+    text-align: center;
+    padding-top: 25px;
+    font-size: 52px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+.players {
+    display: flex;
+}
+.players > div {
+    flex: 1;
+    text-align: center;
+    color: #01a54f;
+    font-size: 26px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+.score {
+    display: flex;
+}
+.score > div {
+    flex: 1;
+    text-align: center;
+    color: #000000;
+    font-size: 26px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+.plusminus {
+    width: 26px;
+    height: 26px;
+    padding-top: 0px;
+}
+.zero {
+    padding-bottom: 1px;
+}
+.button {
+    display: flex;
+}
+.buttons > button {
+    flex: 1;
+    margin: auto;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 100px;
+    height: 50px;
+    background-color: #ec1a23;
+    color: #ffffff;
+    font-weight: bold;
+    border: 0px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.roundCount {
+    font-weight: bold;
+    text-align: center;
+    color: #01a54f;
+    font-size: 26px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+.startButton {
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 100px;
+    height: 50px;
+    background-color: #ec1a23;
+    color: #ffffff;
+    font-weight: bold;
+    border: 0px;
+}

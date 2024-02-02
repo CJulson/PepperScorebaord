@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        var playerOne = sessionStorage.getItem("firstName");
+        var playerTwo = sessionStorage.getItem("secondName");
+        var playerThree = sessionStorage.getItem("thirdName");
+        var playerFour = sessionStorage.getItem("fourthName");
+        let playerOneScore = 0;
+        let playerTwoScore = 0;
+        let playerThreeScore = 0;
+        let playerFourScore = 0;
+        let dealerCount = 0;
+        let roundCount = 0;
+        let roundNumber = 1;
+        let playerOneInfo = {
+            'name': playerOne,
+            'score': playerOneScore
+        }
+        function lowerScoreOne() {
+            playerOneScore--;
+            document.getElementById("playerOneActive").textContent= playerOneScore;
+        }
+        function raiseScoreOne() {
+            playerOneScore++;
+            document.getElementById("playerOneActive").textContent= playerOneScore;
+        }
+        function lowerScoreTwo() {
+            playerTwoScore--;
+            document.getElementById("playerTwoActive").textContent= playerTwoScore;
+        }
+        function raiseScoreTwo() {
+            playerTwoScore++;
+            document.getElementById("playerTwoActive").textContent= playerTwoScore;
+        }
+        function lowerScoreThree() {
+            playerThreeScore--;
+            document.getElementById("playerThreeActive").textContent= playerThreeScore;
+        }
+        function raiseScoreThree() {
+            playerThreeScore++;
+            document.getElementById("playerThreeActive").textContent= playerThreeScore;
+        }
+        function lowerScoreFour() {
+            playerFourScore--;
+            document.getElementById("playerFourActive").textContent= playerFourScore;
+        }
+        function raiseScoreFour() {
+            playerFourScore++;
+            document.getElementById("playerFourActive").textContent= playerFourScore;
+        }
+        let firstScore = 0;
+        let secondScore = 0;
+        function setSecondScore() {
+            let scores = [playerOneScore, playerTwoScore, playerThreeScore, playerFourScore];
+                 let max = -Infinity, result = -Infinity;
+                for (const value of scores) {
+                 const nr = Number(value)
+                if (nr > max) {
+                    [result, max] = [max, nr] // save previous max
+                    } else if (nr < max && nr > result) {
+                    result = nr; // new second biggest
+                }
+            }
+            return result
+        }
+        function checkWin(player) {
+            firstScore = player;
+            let winner = 'who';
+            if (player === playerOneScore) {
+                winner = playerOne
+            } else if (player === playerTwoScore) {
+                winner = playerTwo
+            } else if (player === playerThreeScore) {
+                winner = playerThree
+            } else if (player === playerFourScore) {
+                winner = playerFour
+            }
+            if (player >= 24) {
+                let secondScore = setSecondScore();
+                if (firstScore - 1 > secondScore) {
+                    document.getElementById("winTitle").textContent= winner + ' wins!';
+                }
+            }
+        }
+        function newGame() {
+            window.location.href="set.html";
+            document.getElementById("winTitle").textContent = '';
+            playerOneScore = 0;
+            playerTwoScore = 0;
+            playerThreeScore = 0;
+            playerFourScore = 0;
+        }
+        function setDealer() {
+            for (let i = 0;i < 4; i++){
+                document.getElementById("dealerOne").textContent = 'D';
+                document.getElementById("dealerTwo").textContent = '';
+                document.getElementById("dealerThree").textContent = '';
+                document.getElementById("dealerFour").textContent = '';
+                if (dealerCount === 0) {
+                    return;
+                }
+                document.getElementById("dealerOne").textContent = '';
+                document.getElementById("dealerTwo").textContent = 'D';
+                document.getElementById("dealerThree").textContent = '';
+                document.getElementById("dealerFour").textContent = '';
+                if (dealerCount === 1) {
+                    return;
+                }
+                document.getElementById("dealerOne").textContent = '';
+                document.getElementById("dealerTwo").textContent = '';
+                document.getElementById("dealerThree").textContent = 'D';
+                document.getElementById("dealerFour").textContent = '';
+                if (dealerCount === 2) {
+                    return;
+                }
+                document.getElementById("dealerOne").textContent = '';
+                document.getElementById("dealerTwo").textContent = '';
+                document.getElementById("dealerThree").textContent = '';
+                document.getElementById("dealerFour").textContent = 'D';
+                if (dealerCount === 3) {
+                    dealerCount = dealerCount - 4;
+                    return;
+                }
+            }
+        }
+        function setRound () {
+            roundNumber++;
+            dealerCount++;
+            document.getElementById("roundCounter").textContent = 'Round:' + roundNumber;
+            setDealer();
+        }
+    </script>
+</head>
+<body>
+    <h1>Pepper Scoreboard</h1>
+    <h2 class="players">
+        <div><script>document.write(playerOne)</script></div>
+        <div><script>document.write(playerTwo)</script></div>
+        <div><script>document.write(playerThree)</script></div>
+        <div><script>document.write(playerFour)</script></div>
+    </h2>
+    <h3 class="score">
+        <div id="dealerOne">D</div>
+        <div id="dealerTwo"></div>
+        <div id="dealerThree"></div>
+        <div id="dealerFour"></div>
+    </h3>
+    <h3 class="score">
+        <div><img src="minus.jpg" class="plusminus" id="minusOne" onclick="lowerScoreOne();"> <span id="playerOneActive"><script>document.write(playerOneScore)</script></span> <img src="plus.jpg" class="plusminus" onclick="raiseScoreOne();checkWin(playerOneScore);"></div>
+        <div><img src="minus.jpg" class="plusminus" id="minusOne" onclick="lowerScoreTwo()"> <span id="playerTwoActive"><script>document.write(playerTwoScore)</script></span> <img src="plus.jpg" class="plusminus" onclick="raiseScoreTwo();checkWin(playerTwoScore);"></div>
+        <div><img src="minus.jpg" class="plusminus" id="minusOne" onclick="lowerScoreThree()"> <span id="playerThreeActive"><script>document.write(playerThreeScore)</script></span> <img src="plus.jpg" class="plusminus" onclick="raiseScoreThree();checkWin(playerThreeScore);"></div>
+        <div><img src="minus.jpg" class="plusminus" id="minusOne" onclick="lowerScoreFour()"> <span id="playerFourActive"><script>document.write(playerFourScore)</script></span> <img src="plus.jpg" class="plusminus" onclick="raiseScoreFour();checkWin(playerFourScore);"></div>
+    </h3>
+    <h1 class="winners" id="winTitle"><script>document.write(winner)</script></h1>
+    <div style="text-align: center;" class="buttons"><button class="individ" onclick="newGame()">New Game</button><button onclick="setRound()">New Round</button></div>
+    <br>
+    <div id="roundCounter" class="roundCount">Round: 0</div>
+</body>
+</html>

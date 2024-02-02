@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+        window.saveName = function () {
+        var playerOne = document.getElementById("firstPlayer").value;
+        sessionStorage.setItem("firstName",playerOne);
+        var playerTwo = document.getElementById("secondPlayer").value;
+        sessionStorage.setItem("secondName",playerTwo);
+        var playerThree = document.getElementById("thirdPlayer").value;
+        sessionStorage.setItem("thirdName",playerThree);
+        var playerFour = document.getElementById("fourthPlayer").value;
+        sessionStorage.setItem("fourthName",playerFour);
+        window.location.href="main.html";
+    }
+
+    </script>
+</head>
+<body>
+    <h1>Pepper Scoreboard</h1>
+    <h2 class="players">
+        <div>
+            <form onsubmit="return false">
+            Player 1(First Dealer)</br>
+            <input id="firstPlayer"></input>
+            </form>
+            <form onsubmit="return false">
+            Player 2</br>
+            <input id="secondPlayer"></input>
+            </form>
+            <form onsubmit="return false">
+            Player 3</br>
+            <input id="thirdPlayer"></input>
+            </form>
+            <form onsubmit="return false">
+            Player 4</br>
+            <input id="fourthPlayer"></input><br>
+            <br>
+            <span><button class="startButton" onclick="saveName();"> Submit </button></span>
+            </form>
+        </div>
+    </h2>
+</body>
